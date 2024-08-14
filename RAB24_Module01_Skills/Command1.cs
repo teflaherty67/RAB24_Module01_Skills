@@ -43,6 +43,33 @@
             double meters = 4;
             double metersToFeet = meters * 3.28084;
 
+            // convert mm to feet
+            double mm = 3500;
+            double mmToFeet = mm / 304.8;
+            double mmToFeet2 = (mm / 1000) * 3.28084;
+
+            // find the remainder wehn dividing (ie. the modulo or mod)
+            double remainder1 = 100 % 10; // equals 0 (100 / 10 = 10)
+            double remainder2 = 100 % 9; // equals 1 (100 / 9 = 11 with remainder of 1)
+
+            // increment a number by 1
+            number6++;
+
+            // decrement a number by 1
+            number6--;
+
+            // add number to value of variable
+            number6 += 10;
+
+            // use conditional logic to compare things
+            // compare using boolean operators
+            // == equals
+            // != not equal
+            // > greater than
+            // < less than
+            // >= greater than or equal to
+            // <= less than or equal to
+
              
 
             return Result.Succeeded;
