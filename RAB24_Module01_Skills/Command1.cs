@@ -113,7 +113,16 @@
                 // do something if either is true
             }
 
+            // create a list
+            List<string> list1 = new List<string>();
 
+            // add items to list1
+            list1.Add(text1);
+            list1.Add(text2);
+            list1.Add("this is some text");
+
+            // create list and add items it - method 2
+            List<int> list2 = new List<int> { 1, 2, 3, 4, 5 };
 
 
 
