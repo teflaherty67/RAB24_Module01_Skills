@@ -70,6 +70,53 @@
             // >= greater than or equal to
             // <= less than or equal to
 
+            // check a vaule and perform a single action if true
+            if (number6 > 10)
+            {
+                // do something
+            }
+
+            // check a value and perform an action is true and another if false
+            if (number5 == 100)
+            {
+                // do something if true
+            }
+            else
+            {
+                // do something else if false
+            }
+
+            // check multiple values and perform actions if true and false
+            if (number6 > 100)
+            {
+                // do something if true
+            }
+            else if (number6 == 8)
+            {
+                // do something else if true
+            }
+            else
+            {
+                // do a third thing if false
+            }
+
+            // compound conditional statements
+            // checking for two, or more, conditions using &&
+            if (number6 > 10 &&  number5 == 100)
+            {
+                // do something if both are true
+            }
+
+            // check for either condition using ||
+            if (number6 > 10 || number5 == 100)
+            {
+                // do something if either is true
+            }
+
+
+
+
+
              
 
             return Result.Succeeded;
