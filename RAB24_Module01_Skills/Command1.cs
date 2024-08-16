@@ -9,7 +9,7 @@
             UIApplication uiapp = commandData.Application;
 
             // this is a variable for the current Revit model
-            Document doc = uiapp.ActiveUIDocument.Document;
+            Document curDoc = uiapp.ActiveUIDocument.Document;
 
             // create a comment using a double forward slash
             // comments to do get compiled
@@ -155,7 +155,18 @@
             // to output the results
             TaskDialog.Show("Number Counter", "The number count is " + numCount.ToString());
 
-             
+            // create a transaction to lock the model
+            Transaction t = new Transaction(curDoc);
+            t.Start("Doing something in Revit");
+
+            // create a floor level - see snippet in Revit API (www.revitapidocs.com)
+            // elevation value is in decimal feet regardless of model's units
+            double elevation = 100;
+            Level newLevel = Level.Create(curDoc, elevation);
+            newLevel.Name = "My New Level";
+
+            t.Commit();
+            t.Dispose();
 
             return Result.Succeeded;
         }
