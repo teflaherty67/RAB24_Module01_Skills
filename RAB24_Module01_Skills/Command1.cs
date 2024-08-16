@@ -124,7 +124,36 @@
             // create list and add items it - method 2
             List<int> list2 = new List<int> { 1, 2, 3, 4, 5 };
 
+            // loop through a list using foreach loop
+            foreach (string curString in list1)
+            {
+                // do something w/ curString variable
+            }
 
+            // for example
+            int letterCount = 0;
+            foreach (string curString in list1)
+            {
+                // letterCount = letterCount + curString.Length;
+                letterCount += curString.Length;
+            }
+
+            // loop through a range of numbers
+            for (int i = 0; i <= 10; i++)
+            {
+                // do something
+            }
+
+            // for example
+            int numCount = 0;
+            int counter = 100;
+            for (int i = 0; i <= counter; i++)
+            {
+                numCount += i;
+            }
+
+            // to output the results
+            TaskDialog.Show("Number Counter", "The number count is " + numCount.ToString());
 
              
 
