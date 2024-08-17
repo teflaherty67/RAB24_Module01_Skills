@@ -165,6 +165,59 @@
             Level newLevel = Level.Create(curDoc, elevation);
             newLevel.Name = "My New Level";
 
+            // create a floor plan view - see snippet in Revit API (www.revitapidocs.com)
+            // need to get a fllor plan view family type
+            // by creating a Filtered Element Collector
+            FilteredElementCollector colVFT = new FilteredElementCollector(curDoc)
+                .OfClass(typeof(ViewFamilyType));
+
+            ViewFamilyType floorPlanVFT = null;
+            foreach (ViewFamilyType curVFT in colVFT)
+            {
+                if (curVFT.ViewFamily == ViewFamily.FloorPlan)
+                {
+                    floorPlanVFT = curVFT;
+                    break;
+                }
+            }
+
+            // create a view by specifying the document, view family type, and level
+            ViewPlan newPlan = ViewPlan.Create(curDoc, floorPlanVFT.Id, newLevel.Id);
+            newPlan.Name = "My new floor plan";
+
+            // get ceiling plan view faily type
+            ViewFamilyType ceilingPlanVFT = null;
+            foreach (ViewFamilyType curVFT in colVFT)
+            {
+                if (curVFT.ViewFamily == ViewFamily.CeilingPlan)
+                {
+                    ceilingPlanVFT = curVFT;
+                    break;
+                }
+            }
+
+            // create a ceiling plan by using the ceiling plan view family type
+            ViewPlan newClgPlan = ViewPlan.Create(curDoc, ceilingPlanVFT.Id, newLevel.Id);
+            newClgPlan.Name = "My new ceiling plan";
+
+            // create a sheet
+            // first need to get the title block
+            // by using a Filtered Element Collector
+            FilteredElementCollector colTB = new FilteredElementCollector(curDoc)
+                .OfCategory(BuiltInCategory.OST_TitleBlocks);
+
+            // create the sheet
+            ViewSheet newSheet = ViewSheet.Create(curDoc, colTB.FirstElementId());
+            newSheet.Name = "My new sheet";
+            newSheet.SheetNumber = "A101";
+
+            // add a view to a sheet using Viewport.Create
+            // see snippet in Revit API (www.revitapidocs.com)
+            // first create an insertin point
+            XYZ insPoint = new XYZ(1, 0.5, 0);
+            
+            Viewport newViewport = Viewport.Create(curDoc, newSheet.Id, newPlan.Id, insPoint);
+
             t.Commit();
             t.Dispose();
 
